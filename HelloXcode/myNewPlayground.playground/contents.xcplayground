@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='Vars'/>
+        <page name='dataType'/>
+        <page name='Numbers'/>
+        <page name='Errors'/>
+        <page name='CollectionArray'/>
+        <page name='Dictionaries'/>
+        <page name='Tuplas'/>
+        <page name='Operations'/>
+    </pages>
+</playground>
