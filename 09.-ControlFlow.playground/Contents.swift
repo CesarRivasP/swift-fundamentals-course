@@ -152,3 +152,73 @@ switch stillAnotherPoint {
     default:
         print("No esta sobre el eje")
 }
+
+// **************** CONTINUE / BREAK *********************
+// **************** CONTROL  TRANSFER SENTENCES - continue, brak, fallthrough, return, throw *********************
+let sentence = "Las mentes grandes piensan igual"
+var filteredSentence = ""
+let charactersToRemove: [Character] = ["a", "e", "i", "o", "u"]
+for charact in sentence {
+    print(charact)
+    if charactersToRemove.contains(charact) {
+        continue // No hacer nada, Para que rompa la ejecucion actual, y continue con la siguiente iteraccion
+    }
+    
+    filteredSentence.append(charact)
+    
+    if charact == "d" {
+        break // Finalizar el bucle por completo. Tambien se usa en el swtich
+    }
+}
+filteredSentence
+
+// **************** fallthrough es una palabra reservada (pasar hacia delante). Solo se usa en switch *********************
+let integerToDescribe = 4
+var description = "El numero \(integerToDescribe) es"
+
+switch integerToDescribe {
+    case 2,3,5,7,11,13,17,19:
+        description += " un número primo, y"
+        fallthrough // va a permitir validar el siguiente case, o en este caso, en el default
+    default:
+        description += " un número entero."
+}
+// Termina cayendo en los dos casos.
+print(description)
+
+// **************** RETURN / GUARD *********************
+var people = ["name": "Cesar Rivas", "age": 27, "isMale": true] as [String : Any]
+/* GUARD
+Si existe el surname y lo puede crear, la variable surname va a llegar hasta donde se va a indicar
+*/
+
+func testUserValidation(person: [String: Any]){
+//    guard let surname = person["surname"] else { // No existe
+//        print("El nombre es desconocido")
+//        return
+//    }
+//    // HASTA AQUI EXISTE surname si llegara a existir
+//    print("El surname de la persona es \(surname)")
+    
+    guard let name = person["name"] else { // No existe
+        return
+    }
+    print(name) // Como si existe, si llega hasta aqui la ejecucion.
+    
+    guard let age = person["age"] else { // No existe
+        return
+    }
+    print("La edad de la persona es \(age)") // Como si existe, si llega hasta aqui la ejecucion.
+}
+testUserValidation(person: people)
+
+if let surname = people["name"] {
+    print(surname)
+}
+
+// **************** Available en API: Manejo de versiones *********************
+if #available(iOS 12, macOS 10.12, *) {
+    // Ejecutar las acciones a lo iOS 12+, a los macOS 10.12+
+} else {
+    // Mantener el codigo viejo con versiones anteriores de los iOS, macOS...
+}
